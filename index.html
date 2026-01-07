@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casmento A&E</title>
+    <link rel="icon" type="image/svg+xml" 
+href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💍</text></svg>">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+        :root {
+            font-size: 62.5%;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html,
+        body {
+            width: 100%;    
+            height: 100%;
+        }
+
+        html{ 
+            background-color: #C9D3C4;
+            font-family: "PT Serif", serif;
+        }
+        #inicio{
+            background-color: #E4E9DE;      
+            height: 87.2rem;
+            display: flex;
+           flex-direction: column;
+            justify-content: space-between; /* Isso coloca o primeiro filho no topo e o último na base */
+            position: relative; /* Adicionado para contexto de posicionamento */
+
+        }
+        #logo-cima {
+            max-width: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative; /* Adicionado para controle de posicionamento */
+            flex-wrap: nowrap;
+            overflow: visible;
+            margin-bottom: 1.5rem;
+            padding-bottom: 24.7rem;
+        }
+
+        #logo-cima img {
+            position: absolute; /* Permite que as imagens se sobreponham */
+            height: auto;
+        }
+
+        #logo-casamento1{
+            left: 0; /* Posiciona no canto superior esquerdo */
+            top: 0;
+            z-index: 2; /* Garante que a primeira imagem fique por cima se houver sobreposição */
+        }
+
+        #logo-casamento2 {
+            right: 0; /* Posiciona no canto superior direito */
+            top: 0;
+            z-index: 1; /* Fica abaixo da primeira imagem se houver sobreposição */
+        }
+
+        #logo-baixo {
+            display: flex;
+            justify-content: space-between; /* Para distribuir o texto e as flores */
+            align-items: flex-end; /* Alinha os itens na parte inferior */
+            width: 100%;
+            margin-top: auto; /* Empurra para baixo se necessário */
+        }
+
+        #flores-baixas {
+            max-width: 100%;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative; /* Adicionado para controle de posicionamento */
+            flex-wrap: nowrap;
+            overflow: visible;
+
+            padding-bottom: 24.7rem;
+        }
+        #flores-baixas img{
+            position: absolute;
+        }
+        #flor-baixa1{
+            right: 0; /* Posiciona no canto superior direito */
+            bottom: 0;
+            z-index: 1; /* Fica abaixo da primeira imagem se houver sobreposição */
+        }
+        #flor-baixa2{
+            left:0;
+            bottom: 0;
+            z-index: 2;
+        }
+        #inicio p {
+            width: 25rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 80;
+            margin-bottom: 14rem;
+            font-size: 2rem;
+            color: #303D37;
+        }
+        #horarios{
+            padding-top: 4.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #timer{
+            font-size: 4rem;
+            color: #303D37;
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+        }
+        #timer span{
+            flex: 1;
+            text-align: center;
+        }
+        #nomes-tempo{
+            width: 100%;
+            font-style: italic;
+            display: flex;
+            justify-content: space-around;
+            font-size: 2rem;
+        }
+        #nomes-tempo span{
+            flex: 1;
+            text-align: center;
+        }
+
+        #infos {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza verticalmente */
+            align-items: center; /* Centraliza horizontalmente */
+            min-height: 100vh; /* Ocupa toda a altura da tela */
+            width: 100%;
+            text-align: center; /* Centraliza o texto */
+
+        }
+
+        /* Ajuste para os elementos filhos dentro de #infos */
+        #infos > div {
+            margin-bottom: 2rem; /* Espaçamento entre os blocos */
+            width: 100%;
+        }
+
+        /* Ajuste para os parágrafos */
+        #infos p, .nome-endereco {
+            color: #303D37; 
+            font-size: 1.6rem;
+        }
+
+        #infos .endereco{
+            font-size: 2rem;
+            color: #303D37;
+        }
+
+        /* Ajuste para os botões */
+        #infos .botao {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        a {
+            cursor: pointer;
+        }
+
+        #infos a {
+            color: #303D37;
+        }
+
+        #linha-do-tempo{
+            background-color: #E4E9DE;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            
+        }
+                #linha-do-tempo {
+            max-width: 100%;
+            width: 100%;
+            min-height: 70rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative; /* Adicionado para controle de posicionamento */
+            flex-wrap: nowrap;
+            overflow: visible;
+        }
+
+        #linha-do-tempo img {
+            position: absolute; /* Permite que as imagens se sobreponham */
+            height: auto;
+        }
+
+        #linha-img{
+            align-self: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        #flor1{
+            left: 0;
+            z-index: 5;
+        }
+        #flor2{
+            right: 0;
+            top: -12rem;
+            z-index: 5;
+        }
+
+        #flor3{
+            bottom: -12rem;
+            left: 0;
+        }
+
+        #flor4{
+            bottom: -15rem;
+            right: 0;
+        }
+
+        #botoes{
+            min-height: 74.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+        #botoes img{
+            height: 12em;
+            width: 12rem;
+        }
+
+        #final{
+            text-align: center;
+            font-size: 2rem;
+            color: #303D37;
+        }
+
+        #ultimas-flores{
+            max-width: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative; /* Adicionado para controle de posicionamento */
+            flex-wrap: nowrap;
+            overflow: visible;
+        }
+
+        #ultimas-flores img{
+            position: absolute;
+            bottom: 9rem;
+        }
+
+        #penultima-flor{
+            left: 0;
+        }
+
+        #ultima-flor{
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="inicio">
+        <div id="logo-cima">
+            <img src="img/Group 20.png" id="logo-casamento1">
+            <img src="img/fro 3.png" id="logo-casamento2">
+        </div>
+        <div id="logo-baixo">
+        <p><i>“Revistam-se de amor, pois é o perfeito vínculo de união”.<br>
+        Colossenses 3:14</i></p>
+        <div id="flores-baixas">
+        <img src="img/fro 2.png" id="flor-baixa1">
+        <img src="img/fro 5.png" id="flor-baixa2">
+        </div>            
+        </div>
+    </div>
+    <main>
+        <div id="bloco1">
+            <div id="horarios">
+                <div id="timer">
+                    <span class="timer" id="dias">999</span>
+                    <span class="timer" id="horas">23</span>
+                    <span class="timer" id="minutos">59</span>
+                    <span class="timer" id="segundos">59</span>
+                </div>
+                
+                <div id="nomes-tempo"> 
+                    <span class="nomes tempo" id="dias-nome">dias</span>
+                    <span class="nomes tempo" id="horas-nome">horas</span>
+                    <span class="nomes tempo" id="minuto-nome">minutos</span>
+                    <span class="nomes tempo" id="segundos-nome">segundos</span>
+                </div>
+            </div>
+            <div id="infos">
+                <div id="cerimonia">
+                    <a href="https://maps.app.goo.gl/ARSfjBM2jGAFKpSN9" class="botao"><img src="img/Group 14.png"></a>
+                    <p>
+                        Queridos amigos, vamos nos casar em breve!<br>Agradecemos por fazerem parte da nossa história e sua presença será muito importante.
+                    </p>
+                    <p>
+                        O casamento em que os aspectos espirituais prevalecem realmente honra a Jeová. Convidamos você a um discurso de casamento baseado na Bíblia as <strong>10:00h</strong>
+                    </p>
+                    <p class="nome-endereco">
+                        <strong>
+                        Salão do Reino das testemunhas de Jeová<br>
+                    </p>
+                        
+                        <p class="endereco">
+                        R. Professor Ângelo Carminatti, 75<br>
+                        Jardim dos Ypês - Araras, SP<br>
+                        13609-250<br>
+                        </strong>
+                    </p>
+                </div>
+                <div id="festa">
+                    <a href="https://maps.app.goo.gl/h2tHat9mosUykZs28" class="botao"><img src="img/Group 13.png"></a>
+                    <p>Após a cerimônia, celebraremos esse momento com um almoço em um restaurante,<br>
+                    onde cada convidado poderá <u><i>escolher e pagar</i></u> sua própria refeição.</p>
+                    <p>Qualquer dúvida, estamos à disposição.<br> 
+                    Será uma alegria celebrar esse momento com você!</p>
+                    <p class="nome-endereco"><strong>
+                        Restaurante do Lago<br></p><p class="endereco">
+                        Parque Municipal Dr - Av. Fábio da Silva Prado,<br>
+                        s/n - Centro, Araras - SP, 13600-000<br>
+                    </strong></p>
+                </div>
+                <div id="presente">
+                    <a href="pix.html" class="botao"><img src="img/Group 15.png"></a>
+                    <p>Sua presença é nosso maior presente.<br>
+                    Quem quiser, pode nos mimar com um PIX.</p>
+                    <span class="endereco"><strong>chave Pix Itaú: 02634496885</strong></span>
+                </div>
+                <div id="presenca">
+                    <a href="https://wa.me/5519996006923" class="botao"><img src="img/Group 16.png"></a>
+                    <p>
+                    Por favor, mandem a confirmação de assistência pelo whatsapp até dia <strong>01/03/2026.
+                    </p>
+                    <p>
+                    <a href="https://wa.me/5519998211469" class="endereco">+55 19 99821-1469 (Allan)</a><br>
+                    <a href="https://wa.me/5519996006923" class="endereco">+55 19 99600-6923 (Ely)</a>
+                    </strong></p>
+
+                </div>
+            </div>
+            <div id="linha-do-tempo">
+                <div id="flores-altas">
+                <img src="img/fro 11.png" id="flor1">
+                <img src="img/fro 10.png" id="flor2">
+                </div>
+
+                <img src="img/Group 6.png" id="linha-img">
+                <div id="flores-baixas">
+                <img src="img/fro 8.png" id="flor3">
+                <img src="img/fro 9.png" id="flor4">
+                </div>
+            </div>
+            <div id="links">
+                <div id="botoes">
+                <a href="https://maps.app.goo.gl/ARSfjBM2jGAFKpSN9" class="botao"><img src="img/Group 14.png"></a>
+                <a href="https://maps.app.goo.gl/h2tHat9mosUykZs28" class="botao"><img src="img/Group 13.png"></a>
+                <a href="pix.html" class="botao"><img src="img/Group 15.png"></a>
+                <a href="https://wa.me/5519996006923" class="botao"><img src="img/Group 16.png"></a>
+                </div>
+                <div id="ultimas-flores">
+                    <img src="img/fro 7.png" id="penultima-flor">
+                    <img src="img/fro 6.png" id="ultima-flor">
+                </div>
+            </div>
+            <div id="final">
+                <span><i><strong>Amamos muito vocês!
+                <br>A&E</i></strong></span>
+            </div>
+        </div>
+    </main>
+    <script>
+    function iniciarContagem() {
+        // Data final: 6 de junho de 2026 às 10:00 (horário local)
+        const dataFinal = new Date(2026, 5, 6, 10, 0, 0); 
+        // Mês começa em 0 → junho = 5
+
+        function atualizarTimer() {
+            const agora = new Date();
+            const diferenca = dataFinal - agora;
+
+            if (diferenca <= 0) {
+                document.getElementById("dias").innerText = "0";
+                document.getElementById("horas").innerText = "0";
+                document.getElementById("minutos").innerText = "0";
+                document.getElementById("segundos").innerText = "0";
+                return;
+            }
+
+            const segundosTotais = Math.floor(diferenca / 1000);
+
+            const dias = Math.floor(segundosTotais / (60 * 60 * 24));
+            const horas = Math.floor((segundosTotais % (60 * 60 * 24)) / (60 * 60));
+            const minutos = Math.floor((segundosTotais % (60 * 60)) / 60);
+            const segundos = segundosTotais % 60;
+
+            document.getElementById("dias").innerText = dias;
+            document.getElementById("horas").innerText = String(horas).padStart(2, "0");
+            document.getElementById("minutos").innerText = String(minutos).padStart(2, "0");
+            document.getElementById("segundos").innerText = String(segundos).padStart(2, "0");
+        }
+
+        atualizarTimer();
+        setInterval(atualizarTimer, 1000);
+    }
+
+    iniciarContagem();
+</script>
+
+</body>
+</html>

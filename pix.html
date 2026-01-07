@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pix Presente</title>
+
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💍</text></svg>">
+
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+        :root {
+            font-size: 62.5%;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            background-color: #C9D3C4;
+            font-family: "PT Serif", serif;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.6rem;
+            margin: 2rem 0;
+        }
+
+        .botao {
+            cursor: pointer;
+        }
+
+        #florespix{
+            max-width: 100%;
+            width: 100%;
+        }
+        #flor1{
+            position: absolute;
+           left: 0;
+           top: 0;
+        }
+        #flor2{
+           right: 0;
+           bottom:0;
+           position: absolute;
+        }
+
+        #principal{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+        }
+
+        #principal p{
+            margin-top: 10rem;
+            font-size: 18px;
+            color: #303D37;
+            z-index: 76;
+        }
+
+        #pixBotao{
+                margin-bottom: 10rem;
+                z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="florespix">
+    <img src="img/pixfro1.png" id="flor1">
+    <img src="img/pixfro2.png" id="flor2">
+    </div>
+    <div id="principal">
+    <p>
+        “Sua presença é nosso maior presente.<br>
+        Quem quiser, pode nos mimar com um PIX.”
+    </p>
+
+    <img src="img/qr.png" id="qrcode"> <!--TROCAR O QRCODE-->
+
+    <!-- BOTÃO PIX -->
+    <img 
+        src="img/pixbotao.png" 
+        alt="Copiar Código Pix"
+        class="botao"
+        id="pixBotao"
+    >
+    </div>
+
+
+
+
+
+    <script>
+        const pixBotao = document.getElementById("pixBotao");
+        const textoPix = "02634496885";
+        const imagemOriginal = "img/pixbotao.png";
+        const imagemCopiado = "img/pixbotao2.png";
+
+        pixBotao.addEventListener("click", () => {
+            // Copiar para área de transferência
+            navigator.clipboard.writeText(textoPix);
+
+            // Trocar imagem
+            pixBotao.src = imagemCopiado;
+
+            // Voltar à imagem original após 3 segundos
+            setTimeout(() => {
+                pixBotao.src = imagemOriginal;
+            }, 800);
+        });
+    </script>
+
+</body>
+</html>
