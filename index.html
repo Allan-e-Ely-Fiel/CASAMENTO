@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
+<html lang="pt-br"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casmento A&E</title>
-    <link rel="icon" type="image/svg+xml" 
-href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💍</text></svg>">
+    <title>Casmento A&amp;E</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='0.9em' font-size='90'&gt;💍&lt;/text&gt;&lt;/svg&gt;">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
@@ -108,7 +105,7 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
             transform: translateX(-50%);
             text-align: center;
             z-index: 80;
-            margin-bottom: 14rem;
+            margin-bottom: 10rem;
             font-size: 2rem;
             color: #303D37;
         }
@@ -333,10 +330,10 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
         <div id="bloco1">
             <div id="horarios">
                 <div id="timer">
-                    <span class="timer" id="dias">999</span>
-                    <span class="timer" id="horas">23</span>
-                    <span class="timer" id="minutos">59</span>
-                    <span class="timer" id="segundos">59</span>
+                    <span class="timer" id="dias">144</span>
+                    <span class="timer" id="horas">22</span>
+                    <span class="timer" id="minutos">16</span>
+                    <span class="timer" id="segundos">39</span>
                 </div>
                 
                 <div id="nomes-tempo"> 
@@ -358,9 +355,9 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
                     <p class="nome-endereco">
                         <strong>
                         Salão do Reino das testemunhas de Jeová<br>
-                    </p>
+                    </strong></p><strong>
                         
-                        <p class="endereco">
+                        </strong><p class="endereco"><strong>
                         R. Professor Ângelo Carminatti, 75<br>
                         Jardim dos Ypês - Araras, SP<br>
                         13609-250<br>
@@ -374,7 +371,7 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
                     <p>Qualquer dúvida, estamos à disposição.<br> 
                     Será uma alegria celebrar esse momento com você!</p>
                     <p class="nome-endereco"><strong>
-                        Restaurante do Lago<br></p><p class="endereco">
+                        Restaurante do Lago<br></strong></p><p class="endereco"><strong>
                         Parque Municipal Dr - Av. Fábio da Silva Prado,<br>
                         s/n - Centro, Araras - SP, 13600-000<br>
                     </strong></p>
@@ -389,8 +386,8 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
                     <a href="https://wa.me/5519996009623" class="botao"><img src="img/Group 16.png"></a>
                     <p>
                     Por favor, mandem a confirmação de assistência pelo whatsapp até dia <strong>01/03/2026.
-                    </p>
-                    <p>
+                    </strong></p><strong>
+                    </strong><p><strong>
                     <a href="https://wa.me/5519998211469" class="endereco">+55 19 99821-1469 (Allan)</a><br>
                     <a href="https://wa.me/5519996009623" class="endereco">+55 19 99600-9623 (Ely)</a>
                     </strong></p>
@@ -423,7 +420,7 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
             </div>
             <div id="final">
                 <span><i><strong>Amamos muito vocês!
-                <br>A&E</i></strong></span>
+                <br>A&amp;E</strong></i></span>
             </div>
         </div>
     </main>
@@ -464,6 +461,38 @@ href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10
 
     iniciarContagem();
 </script>
+<audio id="musica" src="mp3/music.mp3" loop></audio>
 
-</body>
-</html>
+<script>
+let iniciado = false;
+
+function tentarTocar() {
+    if (iniciado) return;
+
+    const audio = document.getElementById("musica");
+    audio.volume = 0.5;
+
+    audio.play().then(() => {
+        iniciado = true;
+        removerEventos();
+    }).catch(() => {
+        // bloqueado pelo navegador (ex: scroll)
+    });
+}
+
+function removerEventos() {
+    document.removeEventListener("click", tentarTocar);
+    document.removeEventListener("touchstart", tentarTocar);
+    document.removeEventListener("keydown", tentarTocar);
+    window.removeEventListener("wheel", tentarTocar);
+}
+
+document.addEventListener("click", tentarTocar);
+document.addEventListener("touchstart", tentarTocar);
+document.addEventListener("keydown", tentarTocar);
+window.addEventListener("wheel", tentarTocar);
+</script>
+
+
+
+</body></html>
