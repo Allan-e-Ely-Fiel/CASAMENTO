@@ -72,6 +72,16 @@
             width: 100%;
             margin-top: auto; /* Empurra para baixo se necessário */
         }
+        #botao-musica{
+            position: absolute;
+            width: 10rem;
+            height: 10rem;
+            right: 0;
+            bottom: -4rem;
+            z-index: 96;
+
+            margin-right: 1.5rem;
+        }
 
         #flores-baixas {
             max-width: 100%;
@@ -273,26 +283,25 @@
         #ultima-flor{
             right: 0;
         }
-.galeria {
-    width: 100%;
-    max-width: 110rem;
-    margin: 0 auto;
-    padding: 0 3rem;
+        .galeria {
+            width: 100%;
+            max-width: 110rem;
+            margin: 0 auto;
+            padding: 0 3rem;
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* SEMPRE 3 colunas */
-    gap: 3rem;
-}
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* SEMPRE 3 colunas */
+            gap: 3rem;
+        }
 
-.galeria img {
-    width: 100%;
-    max-width: 15rem;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 1.2rem;
-    justify-self: center;
-}
-
+        .galeria img {
+            width: 100%;
+            max-width: 15rem;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            justify-self: center;
+        }
 
 
     </style>
@@ -320,6 +329,7 @@
         <div id="logo-baixo">
         <p><i>“Revistam-se de amor, pois é o perfeito vínculo de união”.<br>
         Colossenses 3:14</i></p>
+        <img src="img/tocar-musica.png" alt="Tecar Musica" id="botao-musica">
         <div id="flores-baixas">
         <img src="img/fro 2.png" id="flor-baixa1">
         <img src="img/fro 5.png" id="flor-baixa2">
@@ -464,34 +474,21 @@
 <audio id="musica" src="mp3/music.mp3" loop></audio>
 
 <script>
-let iniciado = false;
+const botaoMusica = document.getElementById("botao-musica");
+const musica = document.getElementById("musica");
 
-function tentarTocar() {
-    if (iniciado) return;
-
-    const audio = document.getElementById("musica");
-    audio.volume = 0.5;
-
-    audio.play().then(() => {
-        iniciado = true;
-        removerEventos();
-    }).catch(() => {
-        // bloqueado pelo navegador (ex: scroll)
-    });
-}
-
-function removerEventos() {
-    document.removeEventListener("click", tentarTocar);
-    document.removeEventListener("touchstart", tentarTocar);
-    document.removeEventListener("keydown", tentarTocar);
-    window.removeEventListener("wheel", tentarTocar);
-}
-
-document.addEventListener("click", tentarTocar);
-document.addEventListener("touchstart", tentarTocar);
-document.addEventListener("keydown", tentarTocar);
-window.addEventListener("wheel", tentarTocar);
+botaoMusica.addEventListener("click", () => {
+    if (musica.paused) {
+        musica.volume = 0.25; // 25% (ajuste se quiser)
+        musica.play();
+        botaoMusica.src = "img/pausar-musica.png";
+    } else {
+        musica.pause();
+        botaoMusica.src = "img/tocar-musica.png";
+    }
+});
 </script>
+
 
 
 
