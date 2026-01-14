@@ -303,6 +303,70 @@
             justify-self: center;
         }
 
+        /* ===============================
+        SCROLL ANIMATION SUAVE – BLOCO 1+
+        ================================ */
+
+        @supports (animation-timeline: view()) {
+
+        /* Textos */
+        #bloco1 p,
+        #bloco1 span,
+        #bloco1 a {
+            animation: text-appear ease-in both;
+            animation-timeline: view();
+            animation-range: 0vh 25vh;
+        }
+        #links img,
+        #ultimas-flores img {
+        animation-range: entry 30% 25vh !important;
+        }
+
+        #final span{
+            animation-range: entry 30% 5vh !important;
+        }
+
+        /* Imagens */
+        #bloco1 img {
+            animation: image-appear ease-in both;
+            animation-timeline: view();
+            animation-range: entry 50% 70vh;
+        }
+
+        #linha-img{
+            animation: image-appear ease-in both;
+            animation-timeline: view();
+            animation-range: entry 1% 50vh !important; 
+        }
+
+
+
+        }
+
+        /* Acessibilidade */
+        @media (prefers-reduced-motion: reduce) {
+        #bloco1 * {
+            animation: none !important;
+        }
+        }
+
+        /* Texto – igual ao exemplo */
+        @keyframes text-appear {
+        from {
+            opacity: 0;
+            transform: translateY(8rem);
+        }
+        }
+
+        /* Imagem – igual ao exemplo */
+        @keyframes image-appear {
+        from {
+            filter: saturate(0) contrast(4) brightness(.2) blur(2px);
+            opacity: 0;
+            transform: translateY(4rem) scale(.98);
+        }
+        }
+
 
     </style>
 </head>
